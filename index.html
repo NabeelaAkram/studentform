@@ -1,0 +1,104 @@
+<style>
+    .one{
+        background-color: red;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student form</title>
+</head>
+<body>
+    <h1>Student form</h1>
+
+    <table border="2">
+<tr>
+    <td>Name</td>
+    <td><input type="text" id= "in1"></td>
+    <tr>
+    <td>Age</td>
+<td><input type="text" id="in2"></td></tr>
+ <tr><td>Gender</td>
+<td><input type="radio" name="Gender" value="male">male<input type="radio" name="Gender" value="female">Femlae</td>
+</tr> 
+<tr>
+    <td >Course</td>
+    <td><input type="text" id="in4"></td>
+    <tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" id="in5"></td>
+            <tr style="text-align: center;">
+                <td colspan="2">
+                    <button id="btn" onclick="create()" style="width: 100%; background-color: aqua;">Save</button>
+                </td></tr>
+</table>
+<table  border="2" id="container">
+    <tr>
+        <td>Name</td><td>Age</td><td>Gender</td><td>Course</td><td>Email</td><td>Action</td>
+    </tr>
+</table>
+<script>
+    var in1=document.getElementById("in1")
+    var in2=document.getElementById("in2")
+    var radio=document.getElementsByName("Gender")
+    var in4=document.getElementById("in4")
+     var in5=document.getElementById("in5")
+    var table=document.getElementById("container")
+    var btn=document.getElementById("btn")
+//      radio[0].addEventListener("click",function(){
+//          var result=radio[0].value
+//      })
+//      radio[1].addEventListener("click",function(){
+//          var result=radio[1].value
+//  })
+ function create(){
+
+    var row = document.createElement("tr");
+    var cell1 = document.createElement("td");
+
+var cell2 = document.createElement("td");
+ var cell3 = document.createElement("td");
+// for(count=0;count<2;count++)
+// {
+//     radio[count].addEventListener("click",function(){
+//     cell3.textContent=event.target.value
+//     })
+// }
+var cell4 = document.createElement("td");
+var cell5 = document.createElement("td");
+var cell6=document.createElement("td")
+cell1.innerHTML =in1.value
+
+cell2.innerHTML = in2.value
+//  cell3.innerHTML = result
+if (radio[0].checked){
+cell3.innerHTML=radio[0].value
+}
+else
+{
+    cell3.innerHTML=radio[1].value
+}
+cell4.innerHTML = in4.value
+cell5.innerHTML=in5.value
+cell6.innerHTML = '<button  onclick="deleteitem(event)" class="one">delete</button>';
+
+row.appendChild(cell1);
+
+row.appendChild(cell2);
+row.appendChild(cell3);
+
+row.appendChild(cell4);
+row.appendChild(cell5);
+row.appendChild(cell6);
+table.appendChild(row);
+
+ }
+ function deleteitem(event){
+event.target.closest("tr").remove()
+}
+</script>
+</body>
+</html>
